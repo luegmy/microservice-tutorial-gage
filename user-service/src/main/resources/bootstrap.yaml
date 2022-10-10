@@ -4,4 +4,4 @@ spring:
       enabled: true
       uri: http://localhost:8081
   application:
-    name: useri-service
+    name: user-service

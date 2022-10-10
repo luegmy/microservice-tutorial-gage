@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          default-label: config-server
+          default-label: develop
           uri: https://github.com/luegmy/microservice-tutorial-gage
           search-paths: config-data
   application:
