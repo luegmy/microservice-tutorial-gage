@@ -38,11 +38,11 @@ public class UserService {
     }
 
     public List<Car> getCars(int userId) {
-        return restTemplate.getForObject("http://localhost:8002/car/byuser/" + userId, List.class);
+        return restTemplate.getForObject("http://car-service/car/byuser/" + userId, List.class);
     }
 
     public List<Bike> getBikes(int userId) {
-        return restTemplate.getForObject("http://localhost:8003/bike/byuser/" + userId, List.class);
+        return restTemplate.getForObject("http://bike-service/bike/byuser/" + userId, List.class);
     }
 
     public Car saveCar(int userId,Car car){
@@ -65,12 +65,12 @@ public class UserService {
         result.put("User",user);
 
         List<Car> cars=carFeignClients.getCars(userId);
-        List<Bike> bikes=bikeFeignClients.getBikes(userId);
+
         if(cars.isEmpty())
             result.put("Cars","No tiene carros");
         else
             result.put("Cars",cars);
-
+        List<Bike> bikes=bikeFeignClients.getBikes(userId);
         if(bikes.isEmpty())
             result.put("Bikes","No tiene motos");
         else
