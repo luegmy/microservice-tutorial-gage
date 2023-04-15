@@ -22,11 +22,10 @@ public class CarService {
     }
 
     public Car save(Car car) {
-        Car carNew = carRepository.save(car);
-        return carNew;
+        return carRepository.insert(car);
     }
 
-    public List<Car> byUserId(int userId) {
+    public List<Car> byUserId(String userId) {
         return carRepository.findByUserId(userId);
     }
 }

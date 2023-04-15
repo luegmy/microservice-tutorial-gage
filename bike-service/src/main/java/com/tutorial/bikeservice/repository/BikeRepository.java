@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface BikeRepository extends MongoRepository<Bike, String> {
 
-    List<Bike> findByUserId(int userId);
+    List<Bike> findByUserId(String userId);
 }

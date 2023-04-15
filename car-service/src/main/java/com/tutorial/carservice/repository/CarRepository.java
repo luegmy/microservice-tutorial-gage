@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface CarRepository extends MongoRepository<Car, String> {
 
-    List<Car> findByUserId(int userId);
+    List<Car> findByUserId(String userId);
 }

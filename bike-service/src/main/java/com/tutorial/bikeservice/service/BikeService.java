@@ -22,10 +22,10 @@ public class BikeService {
     }
 
     public Bike save(Bike bike) {
-        return bikeRepository.save(bike);
+        return bikeRepository.insert(bike);
     }
 
-    public List<Bike> byUserId(int userId) {
+    public List<Bike> byUserId(String userId) {
         return bikeRepository.findByUserId(userId);
     }
 }

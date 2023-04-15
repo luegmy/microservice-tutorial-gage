@@ -8,5 +8,5 @@ spring:
       password: p4ssw0rd
       authentication-database: admin
 
-port:
-  server: 8002
+server:
+  port: 8002
