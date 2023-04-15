@@ -22,8 +22,7 @@ public class BikeService {
     }
 
     public Bike save(Bike bike) {
-        Bike bikeNew = bikeRepository.save(bike);
-        return bikeNew;
+        return bikeRepository.save(bike);
     }
 
     public List<Bike> byUserId(int userId) {
