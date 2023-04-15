@@ -2,23 +2,22 @@ package com.tutorial.carservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("cars")
+@Getter
+@Setter
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
     private String brand;
     private String model;
-    private int userId;
+    private String userId;
 }

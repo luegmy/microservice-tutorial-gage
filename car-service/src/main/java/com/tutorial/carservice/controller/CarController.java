@@ -3,38 +3,35 @@ package com.tutorial.carservice.controller;
 import com.tutorial.carservice.entity.Car;
 import com.tutorial.carservice.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/cars")
 public class CarController {
 
     @Autowired
     CarService carService;
 
     @GetMapping
-    public ResponseEntity<List<Car>> getAll() {
-        List<Car> cars = carService.getAll();
-        if(cars.isEmpty())
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.ok(cars);
+    @ResponseStatus(HttpStatus.OK)
+    public List<Car> getAll() {
+        return carService.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Car> getById(@PathVariable("id") int id) {
-        Car car = carService.getCarById(id);
-        if(car == null)
-            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(car);
+    @ResponseStatus(HttpStatus.OK)
+    public Car getById(@PathVariable("id") int id) {
+       return carService.getCarById(id);
     }
 
     @PostMapping()
-    public ResponseEntity<Car> save(@RequestBody Car car) {
-        Car carNew = carService.save(car);
-        return ResponseEntity.ok(carNew);
+    @ResponseStatus(HttpStatus.CREATED)
+    public Car save(@RequestBody Car car) {
+        return carService.save(car);
     }
 
     @GetMapping("/byuser/{userId}")
