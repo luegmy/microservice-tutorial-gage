@@ -24,7 +24,7 @@ public class CarController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Car getById(@PathVariable("id") int id) {
+    public Car getById(@PathVariable("id") String id) {
        return carService.getCarById(id);
     }
 

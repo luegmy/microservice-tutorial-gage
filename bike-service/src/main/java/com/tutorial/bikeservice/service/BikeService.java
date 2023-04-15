@@ -17,7 +17,7 @@ public class BikeService {
         return bikeRepository.findAll();
     }
 
-    public Bike getBikeById(int id) {
+    public Bike getBikeById(String id) {
         return bikeRepository.findById(id).orElse(null);
     }
 

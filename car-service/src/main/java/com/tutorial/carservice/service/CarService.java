@@ -17,7 +17,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Car getCarById(int id) {
+    public Car getCarById(String id) {
         return carRepository.findById(id).orElse(null);
     }
 

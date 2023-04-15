@@ -28,34 +28,33 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(int id) {
+    public User getUserById(String id) {
         return userRepository.findById(id).orElse(null);
     }
 
     public User save(User user) {
-        User userNew = userRepository.save(user);
-        return userNew;
+        return userRepository.save(user);
     }
 
-    public List<Car> getCars(int userId) {
-        return restTemplate.getForObject("http://car-service/car/byuser/" + userId, List.class);
+    public List<Car> getCars(String userId) {
+        return restTemplate.getForObject("http://localhost:8002/caras/byuser/" + userId, List.class);
     }
 
-    public List<Bike> getBikes(int userId) {
-        return restTemplate.getForObject("http://bike-service/bike/byuser/" + userId, List.class);
+    public List<Bike> getBikes(String userId) {
+        return restTemplate.getForObject("http://localhost:8001/bikes/byuser/" + userId, List.class);
     }
 
-    public Car saveCar(int userId,Car car){
+    public Car saveCar(String userId,Car car){
         car.setUserId(userId);
         return carFeignClients.save(car);
     }
 
-    public Bike saveBike(int userId,Bike bike){
+    public Bike saveBike(String userId,Bike bike){
         bike.setUserId(userId);
         return bikeFeignClients.save(bike);
     }
 
-    public Map<String,Object> getCarsAndBikes(int userId){
+    public Map<String,Object> getCarsAndBikes(String userId){
         Map<String,Object> result=new HashMap<>();
         User user=userRepository.findById(userId).orElse(null);
         if(user==null){

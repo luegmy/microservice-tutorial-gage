@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BikeRepository extends MongoRepository<Bike, Integer> {
+public interface BikeRepository extends MongoRepository<Bike, String> {
 
     List<Bike> findByUserId(int userId);
 }

@@ -31,7 +31,7 @@ public class BikeController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Bike getById(@PathVariable("id") int id) {
+    public Bike getById(@PathVariable("id") String id) {
         return bikeService.getBikeById(id);
     }
 
