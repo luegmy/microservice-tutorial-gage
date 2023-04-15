@@ -3,7 +3,10 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: cardb
+      database: userdb
       username: admin
       password: p4ssw0rd
       authentication-database: admin
+
+port:
+  server: 8002
