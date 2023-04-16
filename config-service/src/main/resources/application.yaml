@@ -9,5 +9,7 @@ spring:
           default-label: develop
           uri: https://github.com/luegmy/microservice-tutorial-gage
           search-paths: config-data
+          clone-on-start: true
+
   application:
     name: config-service
