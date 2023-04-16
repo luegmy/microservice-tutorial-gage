@@ -3,7 +3,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: bikedb
+      database: cardb
       username: admin
       password: p4ssw0rd
       authentication-database: admin
