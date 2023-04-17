@@ -7,15 +7,12 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://localhost:8761/eureka
-  prefer-ip-address: true
   instance:
     hostname: localhost
 
 spring:
   cloud:
     gateway:
-      default-filters:
-        - TokenRelay
       discovery:
         locator:
           enabled: true
@@ -23,33 +20,13 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/user/**
-          filters:
-            - RemoveRequestHeader=Cookie
+            - Path=/users/**
         - id: car-service
           uri: lb://car-service
           predicates:
-            - Path=/car/**
+            - Path=/cars/**
         - id: bike-service
           uri: lb://bike-service
           predicates:
-            - Path=/bike/**
-
-  security:
-    oauth2:
-      client:
-        provider:
-          keycloak:
-            authorization-uri: "http://localhost:9090/realms/gage-realm/protocol/openid-connect/auth"
-            userinfo-uri: "http://localhost:9090/realms/gage-realm/protocol/openid-connect/userinfo"
-            user-name-attribute: preferred_username
-            token-uri: "http://localhost:9090/realms/gage-realm/protocol/openid-connect/token"
-        registration:
-          gage-client:
-            client-id: gage-client
-            client-secret: pcYK2ZuBEeCGHGwSqRys0UjcZYZsaZFI
-            provider: keycloak
-            authorization-grant-type: "authorization_code"
-            redirect-uri: "http://localhost:8080/login/oauth2/code/gage-client"
-
+            - Path=/bikes/**
 
