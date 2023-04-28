@@ -3,9 +3,9 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8081
+
   application:
     name: user-service
-
 
   security:
     oauth2:
