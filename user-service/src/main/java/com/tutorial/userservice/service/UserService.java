@@ -7,8 +7,10 @@ import java.util.Map;
 import com.tutorial.userservice.entity.User;
 import com.tutorial.userservice.feignclients.BikeFeignClients;
 import com.tutorial.userservice.feignclients.CarFeignClients;
+import com.tutorial.userservice.model.AccountInfo;
 import com.tutorial.userservice.model.Bike;
 import com.tutorial.userservice.model.Car;
+import com.tutorial.userservice.model.Folder;
 import com.tutorial.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -76,5 +78,9 @@ public class UserService {
             result.put("Bikes",bikes);
 
         return result;
+    }
+
+    public Folder getCategories(AccountInfo accountInfo) {
+        return restTemplate.getForObject("http://localhost:8080/categories/"+ accountInfo.getAccountId() + "?" + accountInfo.getBranchCode() + "&" + accountInfo.getCurrencyCode(),Folder.class);
     }
 }
