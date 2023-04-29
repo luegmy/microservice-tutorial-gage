@@ -9,6 +9,7 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     hostname: localhost
+    preferIpAddress: true
 
 spring:
   cloud:
@@ -22,17 +23,17 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/user/**
+            - Path=/users/**
           filters:
             - RemoveRequestHeader=Cookie
         - id: car-service
           uri: lb://car-service
           predicates:
-            - Path=/car/**
+            - Path=/cars/**
         - id: bike-service
           uri: lb://bike-service
           predicates:
-            - Path=/bike/**
+            - Path=/bikes/**
 
   security:
     oauth2:
