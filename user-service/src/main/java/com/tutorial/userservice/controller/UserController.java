@@ -44,35 +44,35 @@ public class UserController {
 
     @GetMapping("/cars/{userId}")
     @ResponseStatus(HttpStatus.OK)
-    @CircuitBreaker(name = "carsCB",fallbackMethod = "fallbackGetCars")
+    //@CircuitBreaker(name = "carsCB",fallbackMethod = "fallbackGetCars")
     public List<Car> getCars(@PathVariable String userId){
         return userService.getCars(userId);
     }
 
     @GetMapping("/bikes/{userId}")
     @ResponseStatus(HttpStatus.OK)
-    @CircuitBreaker(name = "bikesCB",fallbackMethod = "fallbackGetBikes")
+    //@CircuitBreaker(name = "bikesCB",fallbackMethod = "fallbackGetBikes")
     public List<Bike> getBikes(@PathVariable String userId){
         return userService.getBikes(userId);
     }
 
     @PostMapping("/savecar/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    @CircuitBreaker(name = "carsCB",fallbackMethod = "fallbackSaveCar")
+    //@CircuitBreaker(name = "carsCB",fallbackMethod = "fallbackSaveCar")
     public Car saveCar(@PathVariable String userId, @RequestBody Car car){
         return userService.saveCar(userId,car);
     }
 
     @PostMapping("/savebike/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    @CircuitBreaker(name = "bikesCB",fallbackMethod = "fallbackSaveBike")
+    //@CircuitBreaker(name = "bikesCB",fallbackMethod = "fallbackSaveBike")
     public Bike saveBike(@PathVariable String userId, @RequestBody Bike bike){
 
         return userService.saveBike(userId,bike);
     }
 
     @GetMapping("/all/{userId}")
-    @CircuitBreaker(name = "allCB",fallbackMethod = "fallbackGetCarsAndBikes")
+    //@CircuitBreaker(name = "allCB",fallbackMethod = "fallbackGetCarsAndBikes")
     public ResponseEntity<Map<String,Object>>getCarsAndBikes(@PathVariable String userId){
         return ResponseEntity.ok(userService.getCarsAndBikes(userId));
     }
