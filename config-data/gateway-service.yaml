@@ -7,9 +7,8 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://localhost:8761/eureka
-  preferIpAddress: true
   instance:
-    hostname: localhost
+    hostname: LIM-JSXR063.usersad.everis.int
 
 
 spring:
@@ -39,13 +38,16 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: "http://localhost:9090/realms/gage-realm"
+            authorization-uri: "http://localhost:9090/realms/gage-realm/protocol/openid-connect/auth"
+            userinfo-uri: "http://localhost:9090/realms/gage-realm/protocol/openid-connect/userinfo"
+            user-name-attribute: preferred_username
+            token-uri: "http://localhost:9090/realms/gage-realm/protocol/openid-connect/token"
         registration:
           gage-client:
             provider: keycloak
             client-id: gage-client
             client-secret: pcYK2ZuBEeCGHGwSqRys0UjcZYZsaZFI
             authorization-grant-type: "authorization_code"
-            redirect-uri: "http://localhost:8080/login/oauth2/code/gage-client"
+            redirect-uri: "{baseUrl}/login/oauth2/code/gage-client"
 
 
